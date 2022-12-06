@@ -18,6 +18,8 @@ import { UserDataState } from './store/state/userdata-state';
 import { HttpClientModule } from '@angular/common/http';
 import { TableBeforeComponent } from './table-before/table-before.component';
 import { NgxsStoragePluginModule, StorageOption } from '@ngxs/storage-plugin';
+import { NgxsWebsocketPluginModule } from '@ngxs/websocket-plugin';
+import { MessagesState } from './store/state/message-state';
 
 @NgModule({
   declarations: [
@@ -33,9 +35,12 @@ import { NgxsStoragePluginModule, StorageOption } from '@ngxs/storage-plugin';
 			key: ['user.userConfigurationForm', UserDataState /*, UserConfigurationState*/],
 			storage: StorageOption.SessionStorage, /*StorageOption.LocalStorage <= default*/
 		}),
-    NgxsModule.forRoot([UserConfigurationState, UserDataState]),
+    NgxsModule.forRoot([UserConfigurationState, UserDataState, MessagesState]),
     NgxsFormPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
+    NgxsWebsocketPluginModule.forRoot({
+      url: 'ws://localhost:4300'
+    }),
     NgxsReduxDevtoolsPluginModule.forRoot({disabled: false}),
     BrowserAnimationsModule,
     AppMaterialModule,
