@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
 import { User } from '../models/user';
@@ -23,11 +24,15 @@ export class TableDemoComponent implements OnInit {
 
   users$: Observable<User[]> = this.store.select(UserDataState.allUsers)
 
-  constructor(private store: Store) { 
+  constructor(private store: Store, private router: Router) { 
     this.store.dispatch(new Users.Get())
   }
 
   ngOnInit(): void {
+  }
+
+  go(): void {
+    this.router.navigate(['forms'])
   }
 
 }

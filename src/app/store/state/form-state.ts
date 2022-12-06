@@ -1,22 +1,38 @@
 import { Injectable } from "@angular/core"
-import { State } from "@ngxs/store"
+import { Selector, State } from "@ngxs/store"
 import { User } from "../../models/user"
 
 
-export class Configuration {
-    userConfigurationForm?: {
-        model?: {
-            user: User
-        }
-    }
-}
+// export class Configuration {
+//     userConfigurationForm?: {
+//         model: {
+//             user: User
+//         }
+//     }
+// }
 
-@State<Configuration>({
+// @State<Configuration>({
+//     name: 'user',
+//     defaults: {
+//         userConfigurationForm: {
+//             model: {
+//                 user: new User()
+//             }
+//         }
+//     }
+// })
+// @Injectable()
+// export class UserConfigurationState {
+
+// }
+
+@State({
     name: 'user',
     defaults: {
-        userConfigurationForm: {
-            model: undefined
-        }
+        model: {},
+        dirty: false,
+        status: '',
+        errors: {}
     }
 })
 @Injectable()
