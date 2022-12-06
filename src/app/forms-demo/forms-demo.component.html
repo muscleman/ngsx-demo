@@ -1,0 +1,31 @@
+<div fxLayout="column" fxLayoutAlign="space-between">
+    <form fxLayout="column" 
+          fxLayoutAlign="center center" 
+          [formGroup]="userConfigurationForm" 
+          ngxsForm="user.userConfigurationForm">
+        <mat-form-field>
+            <input matInput type="text" formControlName="firstName">
+            <mat-label>First name</mat-label>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" formControlName="lastName">
+            <mat-label>Last name</mat-label>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" formControlName="phone">
+            <mat-label>Phone number</mat-label>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" formControlName="state">
+            <mat-label>State</mat-label>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" formControlName="zip">
+            <mat-label>Zip</mat-label>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" formControlName="country">
+            <mat-label>Country</mat-label>
+        </mat-form-field>
+    </form>
+</div>
