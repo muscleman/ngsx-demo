@@ -1,7 +1,7 @@
 <div>
     <table
 			mat-table
-			[dataSource]="users$"
+			[dataSource]="dataSource"
 			class="full-width-table">
 			<ng-container matColumnDef="firstName">
 				<th mat-header-cell *matHeaderCellDef>FIRST Name</th>
@@ -61,3 +61,4 @@
 			<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 		</table>
 </div>>
+

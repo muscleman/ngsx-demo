@@ -21,14 +21,13 @@ export class TableDemoComponent implements OnInit {
 		'country'
 	]
 
-  users$: Observable<User[]> = of([])
+  users$: Observable<User[]> = this.store.select(UserDataState.allUsers)
 
   constructor(private store: Store) { 
     this.store.dispatch(new Users.Get())
   }
 
   ngOnInit(): void {
-    this.users$ = this.store.select(UserDataState.allUsers)
   }
 
 }

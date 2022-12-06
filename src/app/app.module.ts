@@ -16,12 +16,14 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { TableDemoComponent } from './table-demo/table-demo.component';
 import { UserDataState } from './store/state/userdata-state';
 import { HttpClientModule } from '@angular/common/http';
+import { TableBeforeComponent } from './table-before/table-before.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormsDemoComponent,
-    TableDemoComponent
+    TableDemoComponent,
+    TableBeforeComponent
   ],
   imports: [
     BrowserModule,
