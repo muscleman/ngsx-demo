@@ -24,6 +24,7 @@
     "@ngxs/devtools-plugin": "^3.7.6",
     "@ngxs/form-plugin": "^3.7.6",
     "@ngxs/logger-plugin": "^3.7.6",
+    "@ngxs/storage-plugin": "^3.7.6",
     "@ngxs/store": "^3.7.6",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

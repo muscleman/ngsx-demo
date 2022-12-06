@@ -17,7 +17,7 @@ import { TableDemoComponent } from './table-demo/table-demo.component';
 import { UserDataState } from './store/state/userdata-state';
 import { HttpClientModule } from '@angular/common/http';
 import { TableBeforeComponent } from './table-before/table-before.component';
-// import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { NgxsStoragePluginModule, StorageOption } from '@ngxs/storage-plugin';
 
 @NgModule({
   declarations: [
@@ -29,10 +29,13 @@ import { TableBeforeComponent } from './table-before/table-before.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxsStoragePluginModule.forRoot({
+			key: ['user.userConfigurationForm', UserDataState /*, UserConfigurationState*/],
+			storage: StorageOption.SessionStorage, /*StorageOption.LocalStorage <= default*/
+		}),
     NgxsModule.forRoot([UserConfigurationState, UserDataState]),
     NgxsFormPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
-    // NgxsStoragePluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot({disabled: false}),
     BrowserAnimationsModule,
     AppMaterialModule,
