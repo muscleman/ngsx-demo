@@ -2,7 +2,7 @@
     <form fxLayout="column" 
           fxLayoutAlign="center center" 
           [formGroup]="userConfigurationForm" 
-          ngxsForm="user"
+          ngxsForm="user.userConfigurationForm"
           [ngxsFormClearOnDestroy]="false">
         <mat-form-field>
             <input matInput type="text" formControlName="firstName">
@@ -29,5 +29,5 @@
             <mat-label>Country</mat-label>
         </mat-form-field>
     </form>
-    <button (click)="go()">GO</button>
+    <button mat-raised-button color="primary" (click)="go()">GO</button>
 </div>
