@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
@@ -22,10 +23,19 @@ export class TableDemoComponent implements OnInit {
 		'country'
 	]
 
+  tableTypeAheadControl = new FormControl(null)
+
   users$: Observable<User[]> = this.store.select(UserDataState.allUsers)
 
   constructor(private store: Store, private router: Router) { 
-    this.store.dispatch(new Users.Get())
+    //this.store.dispatch(new Users.Get())   // <= this guy could happen when your site load for performance reasons. see app.component
+
+
+    this.tableTypeAheadControl.valueChanges.subscribe(
+      (newValue) => {
+        this.store.dispatch(new Users.UserFilter(newValue))
+      }
+    )
   }
 
   ngOnInit(): void {

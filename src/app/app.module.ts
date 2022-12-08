@@ -20,6 +20,7 @@ import { TableBeforeComponent } from './table-before/table-before.component';
 import { NgxsStoragePluginModule, StorageOption } from '@ngxs/storage-plugin';
 import { NgxsWebsocketPluginModule } from '@ngxs/websocket-plugin';
 import { MessagesState } from './store/state/message-state';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -31,16 +32,16 @@ import { MessagesState } from './store/state/message-state';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxsStoragePluginModule.forRoot({
-			key: ['user.userConfigurationForm', UserDataState /*, UserConfigurationState*/],
-			storage: StorageOption.SessionStorage, /*StorageOption.LocalStorage <= default*/
-		}),
+    // NgxsStoragePluginModule.forRoot({
+		// 	key: ['user.userConfigurationForm', UserDataState /*, UserConfigurationState*/],
+		// 	storage: StorageOption.SessionStorage, /*StorageOption.LocalStorage <= default*/
+		// }),
     NgxsModule.forRoot([UserConfigurationState, UserDataState, MessagesState]),
     NgxsFormPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
-    NgxsWebsocketPluginModule.forRoot({
-      url: 'ws://localhost:4300'
-    }),
+    NgxsLoggerPluginModule.forRoot({ disabled: true /*environment.production*/ }),
+    // NgxsWebsocketPluginModule.forRoot({
+    //   url: 'ws://localhost:4300'
+    // }),
     NgxsReduxDevtoolsPluginModule.forRoot({disabled: false}),
     BrowserAnimationsModule,
     AppMaterialModule,

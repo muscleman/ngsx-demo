@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StateContext, Store } from '@ngxs/store';
 import { ConnectWebSocket, SendWebSocketMessage } from '@ngxs/websocket-plugin';
+import { Users } from './store/actions/userdata-actions';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,11 @@ export class AppComponent implements OnInit {
 
   constructor(private store: Store) {}
   ngOnInit(): void {
-    this.store.dispatch(new ConnectWebSocket())
+    // this.store.dispatch(new ConnectWebSocket())
+  }
+  
+  loadUsers(): void {
+    this.store.dispatch(new Users.Get())
   }
 
   go(): void {

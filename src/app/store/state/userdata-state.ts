@@ -8,12 +8,14 @@ import { map } from "rxjs/operators"
 
 export class UserData {
     users!: User[]
+    userFilter!: string
 }
 
 @State<UserData>({
     name: 'userdata',
     defaults: {
-        users: []
+        users: [],
+        userFilter: ''
     }
 })
 @Injectable()
@@ -22,6 +24,9 @@ export class UserDataState {
 
     @Selector()
 	static allUsers(state: UserData) {
+        if (!!state.userFilter) {
+            return state.users.filter(c => c.firstName.includes(state.userFilter))
+        }
         return state.users
     }
 
@@ -39,4 +44,11 @@ export class UserDataState {
         )
 	}
 
+    @Action(Users.UserFilter)
+    filterUsers(ctx: StateContext<UserData>, { payload }: Users.UserFilter) {
+        const state = ctx.getState()
+        ctx.patchState({
+            userFilter: payload
+        })
+    }
 }

@@ -1,4 +1,11 @@
 <div>
+	<div fxLayout="column" fxLayoutAlign="center center" style="padding-top: 16px;">
+	<input
+		matInput
+		data-test="searchBar"
+		[formControl]="tableTypeAheadControl"
+		class="typeAhead" />
+	</div>
     <table
 			mat-table
 			[dataSource]="users$"
@@ -60,5 +67,5 @@
 				*matHeaderRowDef="displayedColumns; sticky: true"></tr>
 			<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 		</table>
-		<button mat-raised-button color="primary" (click)="go()">GO</button>
+		<button mat-raised-button color="primary" (click)="go()">Go to forms route</button>
 </div>

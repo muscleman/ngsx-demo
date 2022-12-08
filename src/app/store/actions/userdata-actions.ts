@@ -7,11 +7,11 @@ export namespace Users {
 
     export class Create {
         static readonly type = '[UserData] Create'
-        constructor(payload: User) {}
+        constructor(public payload: User) {}
     }
 
     export class UserFilter {
         static readonly type = '[UserData] UserFilter'
-        constructor(payload: string) {}
+        constructor(public payload: string) {}
     }
 }
