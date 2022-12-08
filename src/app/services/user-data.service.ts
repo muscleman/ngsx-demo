@@ -14,4 +14,8 @@ export class UserDataService {
   getUserData(): Observable<User[]> {
 		return this.httpClient.get<User[]>(this.endpoint)
 	}
+
+  createUser(user: User): Observable<User> {
+		return this.httpClient.post<User>(this.endpoint, user)
+	}
 }

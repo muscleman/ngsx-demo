@@ -28,14 +28,14 @@ export class TableDemoComponent implements OnInit {
   users$: Observable<User[]> = this.store.select(UserDataState.allUsers)
 
   constructor(private store: Store, private router: Router) { 
-    //this.store.dispatch(new Users.Get())   // <= this guy could happen when your site load for performance reasons. see app.component
+    this.store.dispatch(new Users.Get())   // <= this guy could happen when your site load for performance reasons. see app.component
 
 
-    this.tableTypeAheadControl.valueChanges.subscribe(
-      (newValue) => {
-        this.store.dispatch(new Users.UserFilter(newValue))
-      }
-    )
+    // this.tableTypeAheadControl.valueChanges.subscribe(
+    //   (newValue) => {
+    //     this.store.dispatch(new Users.UserFilter(newValue))
+    //   }
+    // )
   }
 
   ngOnInit(): void {

@@ -3,7 +3,7 @@ import { Action, Selector, State, StateContext } from "@ngxs/store"
 import { UserDataService } from "src/app/services/user-data.service"
 import { User } from "../../models/user"
 import { Users } from "../actions/userdata-actions"
-import { map } from "rxjs/operators"
+import { map, tap } from "rxjs/operators"
 
 
 export class UserData {
@@ -24,9 +24,9 @@ export class UserDataState {
 
     @Selector()
 	static allUsers(state: UserData) {
-        if (!!state.userFilter) {
-            return state.users.filter(c => c.firstName.includes(state.userFilter))
-        }
+        // if (!!state.userFilter) {
+        //     return state.users.filter(c => c.firstName.includes(state.userFilter))
+        // }
         return state.users
     }
 
@@ -44,11 +44,38 @@ export class UserDataState {
         )
 	}
 
-    @Action(Users.UserFilter)
-    filterUsers(ctx: StateContext<UserData>, { payload }: Users.UserFilter) {
-        const state = ctx.getState()
-        ctx.patchState({
-            userFilter: payload
-        })
-    }
+    // @Action(Users.UserFilter)
+    // filterUsers(ctx: StateContext<UserData>, { payload }: Users.UserFilter) {
+    //     const state = ctx.getState()
+    //     ctx.patchState({
+    //         userFilter: payload
+    //     })
+    // }
+
+    // @Action(Users.Create)
+    // createUsers(ctx: StateContext<UserData>, { payload, isWebsocket }: Users.Create) {
+    //     const state = ctx.getState()
+    //     if (isWebsocket) {
+	// 		let latest: User[] = []
+	// 		const index = state.users.findIndex(
+	// 			(item) => item.firstName === payload.firstName
+	// 		)
+	// 		if (index < 0) {
+	// 			latest.push(payload)
+	// 		}
+	// 		if (latest.length > 0) {
+	// 			ctx.patchState({
+	// 				users: state.users.concat(latest),
+	// 			})
+	// 		}
+    //         return state.users
+	// 	} else {
+	// 		return this.userDataService.createUser(payload).pipe(
+	// 			tap((returnData) => {
+	// 				const latest = state.users.concat(returnData)
+	// 				ctx.setState({ ...state, users: latest })
+	// 			})
+	// 		)
+	// 	}
+    // }
 }

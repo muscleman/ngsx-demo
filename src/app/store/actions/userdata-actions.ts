@@ -7,7 +7,7 @@ export namespace Users {
 
     export class Create {
         static readonly type = '[UserData] Create'
-        constructor(public payload: User) {}
+        constructor(public payload: User, public isWebsocket: boolean) {}
     }
 
     export class UserFilter {
