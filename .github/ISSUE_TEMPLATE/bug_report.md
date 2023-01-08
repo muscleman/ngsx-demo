@@ -34,7 +34,8 @@ If applicable, add screenshots to help explain your problem.
  - Browser [e.g. stock browser, safari]
  - Version [e.g. 22]
 
-**Attach Electron Wallet Log File**
+**Log File**
+Attach Equilibrium.log
 
 **Additional context**
 Add any other context about the problem here.
